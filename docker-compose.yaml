@@ -19,7 +19,7 @@ services:
       POSTGRES_USER: skyshop
       POSTGRES_PASSWORD: skyshop
     ports:
-      - "5432:5432"
+      - "5438:5438"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
