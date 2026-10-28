@@ -3,6 +3,7 @@ backend/target/
 backend/*.jar
 backend/.gradle/
 backend/build/
+backend/.env
 
 # Node / Angular
 frontend/node_modules/
