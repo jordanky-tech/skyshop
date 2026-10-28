@@ -3,7 +3,7 @@ spring:
     name: shoplink
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/skyshop
+    url: jdbc:postgresql://localhost:5438/skyshop
     username: skyshop
     password: skyshop
     driver-class-name: org.postgresql.Driver
@@ -16,3 +16,33 @@ spring:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        physical_naming_strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+
+  flyway:
+    # Active ou désactive Flyway (défaut: true)
+    enabled: true
+
+    # Emplacement des fichiers de migration SQL
+    locations: classpath:db/migration
+
+    # Préfixe, séparateur et suffixe des fichiers (ex: V1__init_schema.sql)
+    sql-migration-prefix: V
+    sql-migration-separator: __
+    sql-migration-suffixes: .sql
+
+    # Nom de la table qui enregistre l'historique des migrations
+    table: flyway_schema_history
+
+    # Permet de démarrer Flyway sur une base déjà existante non vide
+    baseline-on-migrate: true
+    baseline-version: 1
+
+    # Empêche le nettoyage complet de la base en production (sécurité)
+    clean-disabled: true
+
+app:
+  upload:
+    dir: ./upload
+  jwt:
+    access:
+      secret: ${JWT_SECRET:chaineDeSecurite}

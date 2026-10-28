@@ -14,12 +14,13 @@ services:
   postgres:
     image: postgres:17
     container_name: shop-postgres
+    restart: always
     environment:
       POSTGRES_DB: skyshop
       POSTGRES_USER: skyshop
       POSTGRES_PASSWORD: skyshop
     ports:
-      - "5438:5438"
+      - "5438:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
